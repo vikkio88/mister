@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class RandomFillerTest {
-    RandomFiller randomFiller;
+    private RandomFiller randomFiller;
 
     @Before
     public void setUp() {
