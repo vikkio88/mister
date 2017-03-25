@@ -1,17 +1,18 @@
 package tests.com.mister.lib.helpers;
 
-import com.mister.lib.helpers.RandomFiller;
+import com.mister.lib.helpers.Randomizer;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
-public class RandomFillerTest {
+public class RandomizerTest {
     @Test
     public void itReturnsARandomNumberWithinALimit() {
-        int times = 20;
+        int times = 1000;
         int high = 100;
         for (int i = 0; i < times; i++) {
-            Assert.assertTrue(RandomFiller.rand(high) < high);
+
+            System.out.println();
+            Assert.assertTrue(Randomizer.intVal(high) < high);
         }
     }
 
@@ -21,8 +22,8 @@ public class RandomFillerTest {
         int high = 100;
         int low = 80;
         for (int i = 0; i < times; i++) {
-            Assert.assertTrue(RandomFiller.rand(low, high) <= high);
-            Assert.assertTrue(RandomFiller.rand(low, high) >= low);
+            Assert.assertTrue(Randomizer.intVal(low, high) <= high);
+            Assert.assertTrue(Randomizer.intVal(low, high) >= low);
         }
     }
 
@@ -30,7 +31,7 @@ public class RandomFillerTest {
     public void chanceReturnsValidOutput() {
         int times = 100;
         for (int i = 0; i < times; i++) {
-            Assert.assertTrue(RandomFiller.chance(100));
+            Assert.assertTrue(Randomizer.chance(100));
         }
     }
 }
