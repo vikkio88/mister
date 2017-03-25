@@ -1,5 +1,6 @@
 package com.mister.app;
 
+import com.fxhelper.loader.SceneLoader;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,14 +21,7 @@ public class Main extends Application {
     }
 
     private void mainWindow() {
-        Parent root = null;
-        try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/views/MainScene.fxml"));
-            root = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(SceneLoader.load("Main"));
         primaryStage.setResizable(false);
         primaryStage.show();
     }

@@ -2,11 +2,13 @@ package com.mister.app.controllers;
 
 
 import com.fxhelper.alert.FxErrorAlert;
+import com.fxhelper.loader.SceneLoader;
 import javafx.event.ActionEvent;
+import javafx.stage.Stage;
 
-public class MainMenuController {
+public class MainMenuController extends BaseAppContoller {
     public void newGame(ActionEvent actionEvent) {
-        System.out.println("NewGame");
+        getStage().setScene(SceneLoader.load("NewGame"));
     }
 
     public void loadGame(ActionEvent actionEvent) {
@@ -18,4 +20,10 @@ public class MainMenuController {
     private boolean checkSavedGames() {
         return false;
     }
+
+    public void exit(ActionEvent actionEvent) {
+        Stage stage = getStage();
+        stage.close();
+    }
+
 }
