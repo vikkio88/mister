@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.RowConstraints?>
-
-<GridPane maxHeight="1013.0" maxWidth="1900.0" minHeight="640.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1500.0" stylesheets="/css/shared.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mister.app.controllers.NewGameController">
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<GridPane maxHeight="1013.0" maxWidth="1900.0" minHeight="640.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1500.0"
+          stylesheets="/css/shared.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="com.mister.app.controllers.NewGameController">
     <children>
         <HBox alignment="CENTER" prefHeight="50.0" spacing="10.0">
-           <children>
-               <TextField fx:id="nameField" alignment="CENTER" prefWidth="180.0" promptText="Full Name" />
-               <TextField fx:id="ageField" prefWidth="50.0" promptText="Age" />
-               <ComboBox fx:id="nationalityField" promptText="Nationality" />
-           </children>
+            <children>
+                <TextField fx:id="nameField" alignment="CENTER" prefWidth="180.0" promptText="Full Name"/>
+                <TextField fx:id="ageField" prefWidth="50.0" promptText="Age"/>
+                <ComboBox fx:id="nationalityField" promptText="Nationality"/>
+            </children>
         </HBox>
-      <TableView prefHeight="668.0" prefWidth="1500.0" GridPane.rowIndex="1">
-        <columns>
-          <TableColumn editable="false" prefWidth="491.0" text="Team Name" />
-            <TableColumn editable="false" prefWidth="425.0" sortable="false" text="Coach" />
-          <TableColumn editable="false" maxWidth="1000.0" prefWidth="103.0" text="Players #" />
-            <TableColumn editable="false" maxWidth="1000.0" prefWidth="139.0" text="Avg Skill" />
-            <TableColumn editable="false" maxWidth="1000.0" prefWidth="1000.0" text="Finances" />
-        </columns>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
-      </TableView>
+        <TableView prefHeight="668.0" prefWidth="1500.0" GridPane.rowIndex="1">
+            <columns>
+                <TableColumn editable="false" prefWidth="491.0" text="Team Name"/>
+                <TableColumn editable="false" prefWidth="425.0" sortable="false" text="Coach"/>
+                <TableColumn editable="false" maxWidth="1000.0" prefWidth="103.0" text="Players #"/>
+                <TableColumn editable="false" maxWidth="1000.0" prefWidth="139.0" text="Avg Skill"/>
+                <TableColumn editable="false" maxWidth="1000.0" prefWidth="1000.0" text="Finances"/>
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+        </TableView>
     </children>
     <columnConstraints>
-        <ColumnConstraints hgrow="ALWAYS" />
+        <ColumnConstraints hgrow="ALWAYS"/>
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints />
-      <RowConstraints />
+        <RowConstraints/>
+        <RowConstraints/>
     </rowConstraints>
 </GridPane>
