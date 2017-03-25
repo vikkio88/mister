@@ -4,9 +4,13 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 
-public class BaseAppContoller {
+abstract class BaseAppController {
     @FXML
     protected Parent root;
+
+    public void initialize() {
+
+    }
 
     Stage getStage() {
         return (Stage) root.getScene().getWindow();

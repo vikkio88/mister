@@ -1,5 +1,5 @@
 package com.mister.app.controllers;
 
-public class NewGameController {
+public class NewGameController extends BaseAppController {
 
 }

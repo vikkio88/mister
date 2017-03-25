@@ -6,7 +6,7 @@ import com.fxhelper.loader.SceneLoader;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 
-public class MainMenuController extends BaseAppContoller {
+public class MainMenuController extends BaseAppController {
     public void newGame(ActionEvent actionEvent) {
         getStage().setScene(SceneLoader.load("NewGame"));
     }
