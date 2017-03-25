@@ -10,8 +10,6 @@ public class RandomizerTest {
         int times = 1000;
         int high = 100;
         for (int i = 0; i < times; i++) {
-
-            System.out.println();
             Assert.assertTrue(Randomizer.intVal(high) < high);
         }
     }
