@@ -1,4 +1,4 @@
-package com.mister.lib.models.enums;
+package com.mister.lib.model.enums;
 
 public enum Nationality {
     IT("Italy"),
