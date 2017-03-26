@@ -69,13 +69,16 @@ public class RandomFiller {
     }
 
     public static Player getPlayer() {
-        return new Player(
+        Player player = new Player(
                 getName(),
                 getSurname(),
                 getPlayerAge(),
                 Nationality.IT,
                 Randomizer.pickOne(Position.values())
         );
+
+        player.setSkill(Randomizer.intVal(0, 90));
+        return player;
     }
 
     private static String getSurname() {
