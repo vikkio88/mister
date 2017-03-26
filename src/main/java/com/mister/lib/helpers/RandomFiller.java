@@ -77,7 +77,7 @@ public class RandomFiller {
                 Randomizer.pickOne(Position.values())
         );
 
-        player.setSkill(Randomizer.intVal(0, 90));
+        player.setSkill(Randomizer.intVal(31, 98));
         return player;
     }
 
