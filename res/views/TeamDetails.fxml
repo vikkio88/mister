@@ -18,7 +18,7 @@
         <RowConstraints/>
     </rowConstraints>
     <HBox alignment="CENTER" prefHeight="50.0" spacing="10.0">
-        <Label fx:id="teamName" />
+        <Label styleClass="header-label" fx:id="teamName" />
     </HBox>
     <TableView fx:id="roster" prefHeight="668.0" prefWidth="1500.0" GridPane.rowIndex="1">
         <columns>
