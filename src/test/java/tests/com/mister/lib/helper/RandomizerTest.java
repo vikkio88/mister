@@ -1,4 +1,4 @@
-package tests.com.mister.lib.helpers;
+package tests.com.mister.lib.helper;
 
 import com.mister.lib.helpers.Randomizer;
 import org.junit.Assert;
