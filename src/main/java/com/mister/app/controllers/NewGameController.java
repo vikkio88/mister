@@ -2,6 +2,7 @@ package com.mister.app.controllers;
 
 import com.mister.lib.model.Team;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 
@@ -9,9 +10,9 @@ import java.awt.*;
 
 public class NewGameController extends BaseAppController {
     @FXML
-    TextField name;
+    TextField nameField;
     @FXML
-    TextField age;
+    TextField ageField;
     @FXML
     ComboBox<String> nationality;
     @FXML
@@ -21,6 +22,4 @@ public class NewGameController extends BaseAppController {
     public void initialize(){
 
     }
-
-
 }
