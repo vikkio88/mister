@@ -29,4 +29,8 @@ public class Team {
         }
         return finance;
     }
+
+    public void setRoster(ArrayList<Player> roster) {
+        this.roster = roster;
+    }
 }

@@ -1,13 +1,9 @@
-package tests.com.mister.lib.models;
+package tests.com.mister.lib.model;
 
 
-import com.mister.lib.model.Player;
 import com.mister.lib.model.Team;
-import com.mister.lib.model.enums.Nationality;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.ArrayList;
 
 
 public class TeamTest {
