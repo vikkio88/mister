@@ -2,7 +2,6 @@ package com.mister.lib.model;
 
 import com.mister.lib.model.enums.Module;
 import com.mister.lib.model.enums.Nationality;
-import com.mister.lib.model.enums.Position;
 
 public class Coach {
 
