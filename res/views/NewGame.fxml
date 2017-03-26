@@ -33,10 +33,9 @@
         </TableView>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0" spacing="10.0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <children>
-            <TextField fx:id="selectedTeamName" alignment="CENTER" prefWidth="180.0" promptText="Select a Team" editable="false"/>
-            <Button fx:id="detailsButton" onAction="#viewDetails" disable="true" text="Details"></Button>
-            <Button fx:id="nextButton" onAction="#next" disable="true" text="Next"></Button>
-
+            <TextField fx:id="selectedTeamName" alignment="CENTER" prefWidth="300.0" promptText="Select a Team" editable="false"/>
+             <Button fx:id="detailsButton" onAction="#viewDetails" disable="true" text="Details"/>
+             <Button fx:id="nextButton" onAction="#next" disable="true" text="Next"/>
          </children>
          <GridPane.margin>
             <Insets bottom="1.0" />
