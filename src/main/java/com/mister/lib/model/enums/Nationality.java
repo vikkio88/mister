@@ -16,4 +16,9 @@ public enum Nationality {
     public String getNationName() {
         return nationName;
     }
+
+    @Override
+    public String toString() {
+        return nationName;
+    }
 }
