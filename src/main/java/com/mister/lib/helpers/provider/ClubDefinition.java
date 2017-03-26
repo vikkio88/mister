@@ -16,7 +16,7 @@ public enum ClubDefinition {
     POLISPORTIVA("Polisportiva %s"),
     REAL("Real %s"),
     JUVE("Juve%s"),
-    EMPTY("");
+    EMPTY("%s");
 
     private static final List<ClubDefinition> DEFINITION_LIST = Collections.unmodifiableList(Arrays.asList(values()));
     private static final int SIZE = DEFINITION_LIST.size();
