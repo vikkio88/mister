@@ -1,4 +1,4 @@
-package tests.com.mister.lib.models;
+package tests.com.mister.lib.model;
 
 
 import com.mister.lib.model.Player;
