@@ -1,8 +1,10 @@
 package tests.com.mister.lib.model;
 
 
+import com.mister.lib.helpers.Randomizer;
 import com.mister.lib.model.Player;
 import com.mister.lib.model.enums.Nationality;
+import com.mister.lib.model.enums.Position;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -40,7 +42,8 @@ public class PlayerTest {
                 name,
                 surname,
                 age,
-                nationality
+                nationality,
+                Randomizer.pickOne(Position.values())
         );
     }
 }
