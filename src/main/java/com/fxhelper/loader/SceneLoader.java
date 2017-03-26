@@ -9,12 +9,15 @@ import java.io.IOException;
 
 public class SceneLoader {
     public static Scene load(String viewName) {
+        String viewPath = String.format("/views/%s.fxml", viewName);
         try {
-            String viewPath = String.format("/views/%s.fxml", viewName);
             FXMLLoader loader = new FXMLLoader(Main.class.getResource(viewPath));
-            return new Scene((Parent) loader.load());
+            Parent root = (Parent) loader.load();
+            return new Scene(root);
         } catch (IOException e) {
-            System.out.println("ciao");
+            System.err.println(String.format("Scene %s not found on %s", viewName, viewPath));
+            e.printStackTrace();
+            System.exit(1);
             return null;
         }
     }
