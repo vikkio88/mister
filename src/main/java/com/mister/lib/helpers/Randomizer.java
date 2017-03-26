@@ -16,4 +16,8 @@ public class Randomizer {
     public static boolean chance(int percentage) {
         return intVal(100) < percentage;
     }
+
+    public static <T> T pickOne(T[] elements) {
+        return elements[random.nextInt(elements.length)];
+    }
 }
