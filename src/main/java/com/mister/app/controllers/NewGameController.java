@@ -1,23 +1,21 @@
 package com.mister.app.controllers;
 
+import com.fxhelper.loader.SceneLoader;
 import com.mister.app.helper.Context;
 import com.mister.lib.helpers.RandomFiller;
 import com.mister.lib.model.Team;
 import com.mister.lib.model.enums.Nationality;
-import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
-import javafx.beans.binding.BooleanExpression;
-import javafx.beans.binding.StringBinding;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
-import javafx.util.Callback;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.Button;
 
 import java.util.ArrayList;
 
@@ -49,24 +47,14 @@ public class NewGameController extends BaseAppController {
 
     @Override
     public void initialize() {
-
-        detailsButton.disableProperty().bind(new BooleanBinding() {
-            @Override
-            protected boolean computeValue() {
-                return selected != null;
-            }
-        });
-        nextButton.disableProperty().bind(new BooleanBinding() {
-            @Override
-            protected boolean computeValue() {
-                return selected != null;
-            }
-        });
-
-        ArrayList<Team> teams = RandomFiller.getTeams(18);
-        Context.getInstance().teamList = FXCollections.observableList(teams);
-        Nationality[] nationalities = Nationality.values();
-        Context.getInstance().nationalities = FXCollections.observableArrayList(nationalities);
+        if (Context.getInstance().teamList == null) {
+            ArrayList<Team> teams = RandomFiller.getTeams(18);
+            Context.getInstance().teamList = FXCollections.observableList(teams);
+        }
+        if (Context.getInstance().nationalities == null) {
+            Nationality[] nationalities = Nationality.values();
+            Context.getInstance().nationalities = FXCollections.observableArrayList(nationalities);
+        }
         nationality.setItems(Context.getInstance().nationalities);
 
         teamName.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getName()));
@@ -79,6 +67,8 @@ public class NewGameController extends BaseAppController {
             if (newSelection != null) {
                 selected = newSelection;
                 selectedTeamName.setText(selected.getName());
+                detailsButton.setDisable(false);
+                nextButton.setDisable(false);
             }
         });
     }
@@ -88,6 +78,7 @@ public class NewGameController extends BaseAppController {
     }
 
     public void viewDetails(ActionEvent actionEvent) {
-        System.out.println(selected.getName());
+        Context.getInstance().selectedTeam = selected;
+        getStage().setScene(SceneLoader.load("TeamDetails"));
     }
 }
