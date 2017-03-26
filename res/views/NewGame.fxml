@@ -20,7 +20,7 @@
                 <ComboBox fx:id="nationality" promptText="Nationality" />
             </children>
         </HBox>
-        <TableView fx:id="teamsTable" onMouseClicked="#clickOnTable" prefHeight="668.0" prefWidth="1500.0" GridPane.rowIndex="1">
+        <TableView fx:id="teamsTable" prefHeight="668.0" prefWidth="1500.0" GridPane.rowIndex="1">
             <columns>
                 <TableColumn fx:id="teamName" editable="false" prefWidth="491.0" text="Team Name" />
                 <TableColumn fx:id="playersNumber" editable="false" maxWidth="1000.0" prefWidth="103.0" text="Players #" />
