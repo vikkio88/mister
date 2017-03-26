@@ -1,6 +1,8 @@
 package tests.com.mister.lib.model;
 
 
+import com.mister.lib.helpers.RandomFiller;
+import com.mister.lib.helpers.Randomizer;
 import com.mister.lib.model.Team;
 import org.junit.Assert;
 import org.junit.Test;
@@ -20,6 +22,6 @@ public class TeamTest {
 
 
     private Team getTeam() {
-        return new Team(name);
+        return new Team(name, RandomFiller.getCoach());
     }
 }
