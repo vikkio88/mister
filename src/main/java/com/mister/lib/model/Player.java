@@ -30,6 +30,10 @@ public class Player {
         return surname;
     }
 
+    public String getFullName() {
+        return String.format("%s %s", surname, name);
+    }
+
     public int getAge() {
         return age;
     }
