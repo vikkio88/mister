@@ -8,38 +8,40 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableView;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 
 import java.util.ArrayList;
 
 public class NewGameController extends BaseAppController {
     @FXML
-    TextField nameField;
+    private TextField nameField;
     @FXML
-    TextField ageField;
+    private TextField ageField;
     @FXML
-    private
-    ComboBox<Nationality> nationality;
+    private ComboBox<Nationality> nationality;
     @FXML
-    private
-    TableView<Team> teamsTable;
+    private TableView<Team> teamsTable;
     @FXML
-    private
-    TableColumn<Team, String> teamName;
+    private TableColumn<Team, String> teamName;
     @FXML
-    private
-    TableColumn<Team, String> playersNumber;
+    private TableColumn<Team, String> playersNumber;
     @FXML
-    private
-    TableColumn<Team, Float> avgSkill;
+    private TableColumn<Team, Float> avgSkill;
     @FXML
-    private
-    TableColumn<Team, Integer> finances;
+    private TableColumn<Team, Integer> finances;
+    @FXML
+    private Button detailsButton;
+    @FXML
+    private Button nextButton;
+    @FXML
+    private TextField selectedTeamName;
+
+    Team selected = null;
 
     @Override
     public void initialize() {
@@ -71,5 +73,26 @@ public class NewGameController extends BaseAppController {
         });
 
         teamsTable.setItems(Context.getInstance().teamList);
+    }
+
+    public void clickOnTable(MouseEvent event) {
+        Node node = ((Node) event.getTarget()).getParent();
+        TableRow row;
+        if (node instanceof TableRow) {
+            row = (TableRow) node;
+            selected = (Team) row.getItem();
+            selectedTeamName.setText(selected.getName());
+            nextButton.setDisable(false);
+            detailsButton.setDisable(false);
+        }
+
+    }
+
+    public void next(ActionEvent actionEvent) {
+        System.out.println("Next");
+    }
+
+    public void viewDetails(ActionEvent actionEvent) {
+        System.out.println(selected.getName());
     }
 }
