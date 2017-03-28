@@ -42,13 +42,19 @@ public class RandomFiller {
     }
 
     public static Coach getCoach() {
-        return new Coach(
+        Coach coach = new Coach(
                 getName(),
                 getSurname(),
                 getCoachAge(),
                 Randomizer.pickOne(Nationality.values()),
                 Randomizer.pickOne(Module.values())
         );
+        coach.setSkill(getSkillValue());
+        return coach;
+    }
+
+    private static int getSkillValue() {
+        return Randomizer.intVal(31, 98);
     }
 
 
@@ -77,7 +83,7 @@ public class RandomFiller {
                 Randomizer.pickOne(Position.values())
         );
 
-        player.setSkill(Randomizer.intVal(31, 98));
+        player.setSkill(getSkillValue());
         return player;
     }
 
