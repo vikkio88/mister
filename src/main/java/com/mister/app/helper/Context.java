@@ -9,6 +9,7 @@ public class Context {
     public ObservableList<Team> teamList;
     public ObservableList<Nationality> nationalities;
     public Team selectedTeam;
+    public String previousView;
 
     public static Context getInstance() {
         return instance;
