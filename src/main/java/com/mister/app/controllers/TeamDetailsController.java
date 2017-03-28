@@ -1,12 +1,15 @@
 package com.mister.app.controllers;
 
+import com.fxhelper.loader.SceneLoader;
 import com.mister.app.helper.Context;
+import com.mister.lib.model.Coach;
 import com.mister.lib.model.Player;
 import com.mister.lib.model.Team;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -26,7 +29,19 @@ public class TeamDetailsController extends BaseAppController {
     @FXML
     private Label teamName;
     @FXML
-    private Button backButton;
+    private TextField avgSkill;
+    @FXML
+    private TextField finance;
+    @FXML
+    private TextField playersPerRole;
+    @FXML
+    private TextField coachName;
+    @FXML
+    private TextField coachAge;
+    @FXML
+    private TextField coachSkill;
+    @FXML
+    private TextField coachModule;
 
     private Team selectedTeam = null;
 
@@ -41,5 +56,21 @@ public class TeamDetailsController extends BaseAppController {
         position.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getPosition().getDefinition()));
         nationality.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getNationality().getNationName()));
         this.roster.setItems(roster);
+
+
+        avgSkill.setText(String.valueOf(selectedTeam.getAvgSkill()));
+        finance.setText(String.valueOf(selectedTeam.getFinance()));
+        playersPerRole.setText("");
+
+        Coach coach = selectedTeam.getCoach();
+        coachName.setText(coach.getFullName());
+        coachAge.setText(String.valueOf(coach.getAge()));
+        coachSkill.setText(String.valueOf(coach.getSkill()));
+        coachModule.setText(selectedTeam.getCoach().getModule().getName());
+    }
+
+    public void back(ActionEvent actionEvent) {
+        String previousView = Context.getInstance().previousView;
+        getStage().setScene(SceneLoader.load(previousView));
     }
 }

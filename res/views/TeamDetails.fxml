@@ -7,7 +7,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.control.Label?>
-<GridPane fx:id="root" maxHeight="1013.0" maxWidth="1900.0" minHeight="640.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1500.0"
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<GridPane fx:id="root" maxHeight="1013.0" maxWidth="1900.0" minHeight="640.0" minWidth="1200.0" prefHeight="800.0"
+          prefWidth="1500.0"
           stylesheets="/css/shared.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="com.mister.app.controllers.TeamDetailsController">
     <columnConstraints>
@@ -18,9 +21,9 @@
         <RowConstraints/>
     </rowConstraints>
     <HBox alignment="CENTER" prefHeight="50.0" spacing="10.0">
-        <Label styleClass="header-label" fx:id="teamName" />
+        <Label styleClass="header-label" fx:id="teamName"/>
     </HBox>
-    <TableView fx:id="roster" prefHeight="668.0" prefWidth="1500.0" GridPane.rowIndex="1">
+    <TableView fx:id="roster" prefHeight="668.0" prefWidth="900.0" GridPane.rowIndex="1">
         <columns>
             <TableColumn fx:id="name" editable="false" prefWidth="491.0" text="Player Name"/>
             <TableColumn fx:id="age" editable="false" maxWidth="1000.0" prefWidth="103.0" text="Age"/>
@@ -32,4 +35,39 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
         </columnResizePolicy>
     </TableView>
+    <GridPane styleClass="subgrid" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0"
+              GridPane.halignment="CENTER"
+              GridPane.rowIndex="2">
+        <Label styleClass="title" GridPane.rowIndex="0">Team Info</Label>
+        <Label GridPane.rowIndex="1" GridPane.columnIndex="0">Avg Skill</Label>
+        <TextField fx:id="avgSkill" alignment="CENTER" prefWidth="200.0" editable="false"
+                   GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        <Label GridPane.rowIndex="2" GridPane.columnIndex="0">Finances (m €)</Label>
+        <TextField fx:id="finance" alignment="CENTER" prefWidth="50.0" editable="false"
+                   GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        <Label GridPane.rowIndex="3" GridPane.columnIndex="0">Players per Role</Label>
+        <TextField fx:id="playersPerRole" alignment="CENTER" prefWidth="50.0" editable="false"
+                   GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+    </GridPane>
+    <GridPane styleClass="subgrid" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0"
+              GridPane.halignment="CENTER"
+              GridPane.rowIndex="3">
+        <Label styleClass="title" GridPane.rowIndex="0">Coach</Label>
+        <Label GridPane.rowIndex="1" GridPane.columnIndex="0">Name</Label>
+        <TextField fx:id="coachName" alignment="CENTER" prefWidth="200.0" editable="false"
+                   GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        <Label GridPane.rowIndex="2" GridPane.columnIndex="0">Age</Label>
+        <TextField fx:id="coachSkill" alignment="CENTER" prefWidth="50.0" editable="false"
+                   GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        <Label GridPane.rowIndex="3" GridPane.columnIndex="0">Skill</Label>
+        <TextField fx:id="coachAge" alignment="CENTER" prefWidth="50.0" editable="false"
+                   GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        <Label GridPane.rowIndex="4" GridPane.columnIndex="0">Module</Label>
+        <TextField fx:id="coachModule" alignment="CENTER" prefWidth="100.0" editable="false"
+                   GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+    </GridPane>
+    <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0" spacing="10.0" GridPane.halignment="CENTER"
+          GridPane.rowIndex="4">
+        <Button fx:id="backButton" onAction="#back" text="Back"/>
+    </HBox>
 </GridPane>
