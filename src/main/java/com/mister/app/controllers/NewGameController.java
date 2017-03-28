@@ -33,7 +33,7 @@ public class NewGameController extends BaseAppController {
     @FXML
     private TableColumn<Team, String> playersNumber;
     @FXML
-    private TableColumn<Team, Float> avgSkill;
+    private TableColumn<Team, Integer> avgSkill;
     @FXML
     private TableColumn<Team, Integer> finances;
     @FXML
@@ -59,7 +59,7 @@ public class NewGameController extends BaseAppController {
 
         teamName.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getName()));
         playersNumber.setCellValueFactory(p -> new SimpleStringProperty(Integer.toString(p.getValue().getRoster().size())));
-        avgSkill.setCellValueFactory(p -> new SimpleObjectProperty<>(Float.parseFloat("1.0")));
+        avgSkill.setCellValueFactory(p -> new SimpleObjectProperty<>(p.getValue().getAvgSkill()));
         finances.setCellValueFactory(p -> new SimpleObjectProperty<>(p.getValue().getFinance()));
         teamsTable.setItems(Context.getInstance().teamList);
         teamsTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) ->

@@ -1,6 +1,7 @@
 package com.mister.lib.model;
 
 import com.mister.lib.helpers.RandomFiller;
+import com.mister.lib.model.generic.Person;
 
 import java.util.ArrayList;
 
@@ -9,6 +10,7 @@ public class Team {
     private ArrayList<Player> roster;
     private Integer finance;
     private Coach coach;
+    private Integer avgSkill = null;
 
     public Team(String name, Coach coach) {
         this.name = name;
@@ -42,5 +44,13 @@ public class Team {
 
     public Coach getCoach() {
         return coach;
+    }
+
+    public Integer getAvgSkill() {
+        if (avgSkill == null) {
+            int sum = getRoster().stream().mapToInt(Person::getSkill).sum();
+            avgSkill = sum / (getRoster().size());
+        }
+        return avgSkill;
     }
 }
