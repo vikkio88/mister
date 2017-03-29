@@ -5,7 +5,6 @@ import com.mister.app.helper.Context;
 import com.mister.lib.helpers.RandomFiller;
 import com.mister.lib.model.Team;
 import com.mister.lib.model.enums.Nationality;
-import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
