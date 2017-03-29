@@ -71,6 +71,6 @@ public class TeamDetailsController extends BaseAppController {
 
     public void back(ActionEvent actionEvent) {
         String previousView = Context.getInstance().previousView;
-        getStage().setScene(SceneLoader.load(previousView));
+        showView(previousView);
     }
 }

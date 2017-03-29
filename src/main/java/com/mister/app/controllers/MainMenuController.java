@@ -7,11 +7,13 @@ import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 
 public class MainMenuController extends BaseAppController {
+
     public void newGame(ActionEvent actionEvent) {
-        getStage().setScene(SceneLoader.load("NewGame"));
+        showView("NewGame");
     }
 
     public void loadGame(ActionEvent actionEvent) {
+        System.out.println(this.viewName);
         if (!checkSavedGames()) {
             new FxErrorAlert("No Saved Games!");
         }

@@ -79,6 +79,6 @@ public class NewGameController extends BaseAppController {
     public void viewDetails(ActionEvent actionEvent) {
         Context.getInstance().selectedTeam = selected;
         Context.getInstance().previousView = "NewGame";
-        getStage().setScene(SceneLoader.load("TeamDetails"));
+        showView("TeamDetails");
     }
 }
