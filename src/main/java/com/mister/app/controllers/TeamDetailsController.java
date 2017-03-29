@@ -1,6 +1,5 @@
 package com.mister.app.controllers;
 
-import com.fxhelper.loader.SceneLoader;
 import com.mister.app.helper.Context;
 import com.mister.lib.model.Coach;
 import com.mister.lib.model.Player;

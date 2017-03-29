@@ -2,7 +2,6 @@ package com.mister.app.controllers;
 
 
 import com.fxhelper.alert.FxErrorAlert;
-import com.fxhelper.loader.SceneLoader;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 
