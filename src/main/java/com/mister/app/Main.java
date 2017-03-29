@@ -17,7 +17,7 @@ public class Main extends Application {
     }
 
     private void mainWindow() {
-        primaryStage.setScene(SceneLoader.load("Main"));
+        primaryStage.setScene(SceneLoader.load("MainMenu"));
         primaryStage.setResizable(false);
         primaryStage.show();
     }
