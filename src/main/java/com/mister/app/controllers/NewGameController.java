@@ -73,7 +73,8 @@ public class NewGameController extends BaseAppController {
     }
 
     public void next(ActionEvent actionEvent) {
-        System.out.println("Next");
+        Context.getInstance().selectedTeam = selected;
+        showView("GameMain");
     }
 
     public void viewDetails(ActionEvent actionEvent) {
