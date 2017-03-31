@@ -1,5 +1,8 @@
 package com.mister.app.controllers;
 
+import com.fxhelper.alert.FxErrorAlert;
+import com.fxhelper.generic.FxAlert;
+import com.mister.app.game.model.HumanPlayer;
 import com.mister.app.helper.Context;
 import com.mister.lib.helpers.RandomFiller;
 import com.mister.lib.model.Team;
@@ -21,7 +24,7 @@ public class NewGameController extends BaseAppController {
     @FXML
     private TextField nameField;
     @FXML
-    private TextField ageField;
+    private TextField surnameField;
     @FXML
     private ComboBox<Nationality> nationality;
     @FXML
@@ -72,8 +75,18 @@ public class NewGameController extends BaseAppController {
     }
 
     public void next(ActionEvent actionEvent) {
+        if (!validUserInfo()) {
+            new FxErrorAlert("Wrong player info");
+            nameField.requestFocus();
+            return;
+        }
+        Context.getInstance().humanPlayer = new HumanPlayer(nameField.getText(), surnameField.getText(), nationality.getValue());
         Context.getInstance().selectedTeam = selected;
         showView("GameMain");
+    }
+
+    private boolean validUserInfo() {
+        return nameField.getText().length() > 1 && surnameField.getText().length() > 1 && nationality.getValue() != null;
     }
 
     public void viewDetails(ActionEvent actionEvent) {

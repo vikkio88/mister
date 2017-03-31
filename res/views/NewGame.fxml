@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <GridPane fx:id="root" maxHeight="1013.0" maxWidth="1900.0" minHeight="640.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1500.0"
           stylesheets="/css/shared.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="com.mister.app.controllers.NewGameController">
@@ -22,8 +23,9 @@
         <RowConstraints/>
     </rowConstraints>
     <HBox alignment="CENTER" prefHeight="50.0" spacing="10.0">
-        <TextField fx:id="nameField" alignment="CENTER" prefWidth="180.0" promptText="Full Name"/>
-        <TextField fx:id="ageField" prefWidth="50.0" promptText="Age"/>
+        <Label styleClass="header-label" text="Player Info" />
+        <TextField fx:id="nameField" alignment="CENTER" prefWidth="100.0" promptText="Name"/>
+        <TextField fx:id="surnameField" prefWidth="100.0" promptText="Surname"/>
         <ComboBox fx:id="nationality" promptText="Nationality"/>
     </HBox>
     <TableView fx:id="teamsTable" prefHeight="668.0" prefWidth="1500.0" GridPane.rowIndex="1">
