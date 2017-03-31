@@ -1,5 +1,6 @@
 package com.mister.app.helper;
 
+import com.mister.app.game.model.HumanPlayer;
 import com.mister.lib.model.Team;
 import com.mister.lib.model.enums.Nationality;
 import javafx.collections.ObservableList;
@@ -10,6 +11,7 @@ public class Context {
     public ObservableList<Nationality> nationalities;
     public Team selectedTeam;
     public String previousView;
+    public HumanPlayer humanPlayer;
 
     public static Context getInstance() {
         return instance;
