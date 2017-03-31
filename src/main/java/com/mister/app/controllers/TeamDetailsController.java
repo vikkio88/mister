@@ -1,5 +1,6 @@
 package com.mister.app.controllers;
 
+import com.mister.app.game.model.HumanPlayer;
 import com.mister.app.helper.Context;
 import com.mister.lib.model.Coach;
 import com.mister.lib.model.Player;
@@ -36,6 +37,8 @@ public class TeamDetailsController extends BaseAppController {
     @FXML
     private TextField coachName;
     @FXML
+    public TextField coachNationality;
+    @FXML
     private TextField coachAge;
     @FXML
     private TextField coachSkill;
@@ -63,6 +66,7 @@ public class TeamDetailsController extends BaseAppController {
 
         Coach coach = selectedTeam.getCoach();
         coachName.setText(coach.getFullName());
+        coachNationality.setText(coach.getNationality().getNationName());
         coachAge.setText(String.valueOf(coach.getAge()));
         coachSkill.setText(String.valueOf(coach.getSkill()));
         coachModule.setText(selectedTeam.getCoach().getModule().getName());

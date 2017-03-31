@@ -56,15 +56,18 @@
         <Label GridPane.rowIndex="1" GridPane.columnIndex="0">Name</Label>
         <TextField fx:id="coachName" alignment="CENTER" prefWidth="200.0" editable="false"
                    GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-        <Label GridPane.rowIndex="2" GridPane.columnIndex="0">Age</Label>
-        <TextField fx:id="coachSkill" alignment="CENTER" prefWidth="50.0" editable="false"
+        <Label GridPane.rowIndex="2" GridPane.columnIndex="0">Nationality</Label>
+        <TextField fx:id="coachNationality" alignment="CENTER" prefWidth="50.0" editable="false"
                    GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-        <Label GridPane.rowIndex="3" GridPane.columnIndex="0">Skill</Label>
-        <TextField fx:id="coachAge" alignment="CENTER" prefWidth="50.0" editable="false"
+        <Label GridPane.rowIndex="3" GridPane.columnIndex="0">Age</Label>
+        <TextField fx:id="coachSkill" alignment="CENTER" prefWidth="50.0" editable="false"
                    GridPane.rowIndex="3" GridPane.columnIndex="1"/>
-        <Label GridPane.rowIndex="4" GridPane.columnIndex="0">Module</Label>
-        <TextField fx:id="coachModule" alignment="CENTER" prefWidth="100.0" editable="false"
+        <Label GridPane.rowIndex="4" GridPane.columnIndex="0">Skill</Label>
+        <TextField fx:id="coachAge" alignment="CENTER" prefWidth="50.0" editable="false"
                    GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+        <Label GridPane.rowIndex="5" GridPane.columnIndex="0">Module</Label>
+        <TextField fx:id="coachModule" alignment="CENTER" prefWidth="100.0" editable="false"
+                   GridPane.rowIndex="5" GridPane.columnIndex="1"/>
     </GridPane>
     <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0" spacing="10.0" GridPane.halignment="CENTER"
           GridPane.rowIndex="4">
