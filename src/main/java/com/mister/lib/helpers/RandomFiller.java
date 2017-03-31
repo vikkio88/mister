@@ -36,7 +36,7 @@ public class RandomFiller {
                 getCoach()
         );
         team.setRoster(
-                getPlayers(Randomizer.intVal(13, 20))
+                getPlayers(Randomizer.intVal(18, 22))
         );
         return team;
     }
