@@ -13,7 +13,8 @@ import org.apache.commons.lang3.text.WordUtils;
 import java.util.ArrayList;
 
 public class RandomFiller {
-    static Faker faker = new Faker("it");
+    private static final String FALLBACK_LOCALE = "it";
+    private static Faker faker = new Faker(FALLBACK_LOCALE);
 
     public static int finance() {
         if (Randomizer.chance(20)) {
@@ -23,7 +24,7 @@ public class RandomFiller {
     }
 
     public static ArrayList<Team> getTeams(int limit) {
-        ArrayList<Team> teams = new ArrayList<Team>();
+        ArrayList<Team> teams = new ArrayList<>();
         for (int i = 0; i < limit; i++) {
             teams.add(getTeam());
         }
@@ -31,14 +32,41 @@ public class RandomFiller {
     }
 
     public static Team getTeam() {
+        Coach coach = getCoach(getNationality());
         Team team = new Team(
                 getTeamName(),
-                getCoach()
+                coach
         );
+
         team.setRoster(
-                getPlayers(Randomizer.intVal(18, 22))
+                getPlayers(Randomizer.intVal(12, 16))
         );
+        //adding a goal keeper
+        Player goalKeeper = getPlayer(getNationality());
+        goalKeeper.setPosition(Position.GK);
+        team.getRoster().add(goalKeeper);
+
+        //adding some foreign players
+        ArrayList<Player> foreigners = geForeignPlayers(Randomizer.intVal(5, 8));
+        team.getRoster().addAll(foreigners);
         return team;
+    }
+
+    private static Nationality getNationality() {
+        return Randomizer.pickOne(Nationality.values());
+    }
+
+    private static void setFaker(String nationCode) {
+        if (!faker.getLocale().equals(nationCode)) {
+            faker = new Faker(nationCode);
+        }
+    }
+
+    public static Coach getCoach(Nationality nationality) {
+        setFaker(nationality.getNationCode());
+        Coach coach = getCoach();
+        setFaker(FALLBACK_LOCALE);
+        return coach;
     }
 
     public static Coach getCoach() {
@@ -46,7 +74,7 @@ public class RandomFiller {
                 getName(),
                 getSurname(),
                 getCoachAge(),
-                Randomizer.pickOne(Nationality.values()),
+                getNationalityFromFaker(),
                 Randomizer.pickOne(Module.values())
         );
         coach.setSkill(getSkillValue());
@@ -57,9 +85,16 @@ public class RandomFiller {
         return Randomizer.intVal(31, 98);
     }
 
+    public static ArrayList<Player> geForeignPlayers(int limit) {
+        ArrayList<Player> players = new ArrayList<>();
+        for (int i = 0; i < limit; i++) {
+            players.add(getPlayer(getNationality()));
+        }
+        return players;
+    }
 
     public static ArrayList<Player> getPlayers(int limit) {
-        ArrayList<Player> players = new ArrayList<Player>();
+        ArrayList<Player> players = new ArrayList<>();
         for (int i = 0; i < limit; i++) {
             players.add(getPlayer());
         }
@@ -74,12 +109,19 @@ public class RandomFiller {
         return WordUtils.capitalize(faker.address.city());
     }
 
+    public static Player getPlayer(Nationality nationality) {
+        setFaker(nationality.getNationCode());
+        Player player = getPlayer();
+        setFaker(FALLBACK_LOCALE);
+        return player;
+    }
+
     public static Player getPlayer() {
         Player player = new Player(
                 getName(),
                 getSurname(),
                 getPlayerAge(),
-                Nationality.IT,
+                getNationalityFromFaker(),
                 Randomizer.pickOne(Position.values())
         );
 
@@ -102,5 +144,9 @@ public class RandomFiller {
 
     public static int getCoachAge() {
         return Randomizer.intVal(31, 71);
+    }
+
+    private static Nationality getNationalityFromFaker() {
+        return Nationality.valueOf(faker.getLocale().toUpperCase());
     }
 }
