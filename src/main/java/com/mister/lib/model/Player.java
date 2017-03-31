@@ -15,4 +15,8 @@ public class Player extends Person {
     public Position getPosition() {
         return position;
     }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
 }
