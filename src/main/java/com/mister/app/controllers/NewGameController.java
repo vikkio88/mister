@@ -56,7 +56,7 @@ public class NewGameController extends BaseAppController {
         teamName.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getName()));
         playersNumber.setCellValueFactory(p -> new SimpleStringProperty(Integer.toString(p.getValue().getRoster().size())));
         avgSkill.setCellValueFactory(p -> new SimpleObjectProperty<>(p.getValue().getAvgSkill()));
-        finances.setCellValueFactory(p -> new SimpleObjectProperty<>(p.getValue().getFinance()));
+        finances.setCellValueFactory(p -> new SimpleObjectProperty<>(p.getValue().getFinanceMillions()));
         teamsTable.setItems(Context.getInstance().teamList);
         teamsTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) ->
         {
