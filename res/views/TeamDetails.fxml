@@ -42,7 +42,7 @@
         <Label GridPane.rowIndex="1" GridPane.columnIndex="0">Avg Skill</Label>
         <TextField fx:id="avgSkill" alignment="CENTER" prefWidth="200.0" editable="false"
                    GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-        <Label GridPane.rowIndex="2" GridPane.columnIndex="0">Finances (m €)</Label>
+        <Label GridPane.rowIndex="2" GridPane.columnIndex="0">Finances</Label>
         <TextField fx:id="finance" alignment="CENTER" prefWidth="50.0" editable="false"
                    GridPane.rowIndex="2" GridPane.columnIndex="1"/>
         <Label GridPane.rowIndex="3" GridPane.columnIndex="0">Players per Role</Label>
