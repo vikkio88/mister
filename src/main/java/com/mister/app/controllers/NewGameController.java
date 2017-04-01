@@ -3,6 +3,7 @@ package com.mister.app.controllers;
 import com.fxhelper.alert.FxErrorAlert;
 import com.fxhelper.alert.FxOkCancelDialog;
 import com.mister.app.game.model.HumanPlayer;
+import com.mister.app.game.model.PlayerTeam;
 import com.mister.app.helper.Context;
 import com.mister.lib.helpers.RandomFiller;
 import com.mister.lib.model.Team;
@@ -92,7 +93,7 @@ public class NewGameController extends BaseAppController {
             return;
         }
         Context.getInstance().humanPlayer = new HumanPlayer(nameField.getText(), surnameField.getText(), nationality.getValue());
-        Context.getInstance().selectedTeam = selected;
+        Context.getInstance().humanTeam = new PlayerTeam(selected);
         showView("GameMain");
     }
 
