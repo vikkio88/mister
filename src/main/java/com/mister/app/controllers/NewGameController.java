@@ -1,6 +1,7 @@
 package com.mister.app.controllers;
 
 import com.fxhelper.alert.FxErrorAlert;
+import com.fxhelper.alert.FxOkCancelDialog;
 import com.mister.app.game.model.HumanPlayer;
 import com.mister.app.helper.Context;
 import com.mister.lib.helpers.RandomFiller;
@@ -45,15 +46,7 @@ public class NewGameController extends BaseAppController {
     public void initialize() {
         if (Context.getInstance().teamList == null) {
             teamsTable.setPlaceholder(new Label("Generating Teams..."));
-            final Task<ObservableList<Team>> teamsGenerator = new Task<ObservableList<Team>>() {
-                @Override
-                protected ObservableList<Team> call() throws Exception {
-                    Context.getInstance().teamList = FXCollections.observableList(RandomFiller.getTeams(18));
-                    teamsTable.setItems(Context.getInstance().teamList);
-                    return Context.getInstance().teamList;
-                }
-            };
-            new Thread(teamsGenerator).start();
+            generateTeams();
         }
         if (Context.getInstance().nationalities == null) {
             Nationality[] nationalities = Nationality.values();
@@ -76,14 +69,28 @@ public class NewGameController extends BaseAppController {
         });
     }
 
+    private void generateTeams() {
+        final Task<ObservableList<Team>> teamsGenerator = new Task<ObservableList<Team>>() {
+            @Override
+            protected ObservableList<Team> call() throws Exception {
+                Context.getInstance().teamList = FXCollections.observableList(RandomFiller.getTeams(18));
+                teamsTable.setItems(Context.getInstance().teamList);
+                return Context.getInstance().teamList;
+            }
+        };
+        new Thread(teamsGenerator).start();
+    }
+
     public void next(ActionEvent actionEvent) {
         if (!validUserInfo()) {
-            new FxErrorAlert("Please insert your Name");
+            new FxErrorAlert("Some info are missing...");
             nameField.requestFocus();
             return;
         }
-
-
+        FxOkCancelDialog dialog = new FxOkCancelDialog(String.format("You selected %s as your team, are you sure?", selected.getName()));
+        if (!dialog.ask()) {
+            return;
+        }
         Context.getInstance().humanPlayer = new HumanPlayer(nameField.getText(), surnameField.getText(), nationality.getValue());
         Context.getInstance().selectedTeam = selected;
         showView("GameMain");
