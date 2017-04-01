@@ -1,6 +1,5 @@
 package com.mister.app.controllers;
 
-import com.mister.app.game.model.HumanPlayer;
 import com.mister.app.helper.Context;
 import com.mister.lib.model.Coach;
 import com.mister.lib.model.Player;
