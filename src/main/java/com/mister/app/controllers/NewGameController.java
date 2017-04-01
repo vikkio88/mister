@@ -78,10 +78,12 @@ public class NewGameController extends BaseAppController {
 
     public void next(ActionEvent actionEvent) {
         if (!validUserInfo()) {
-            new FxErrorAlert("Wrong player info");
+            new FxErrorAlert("Please insert your Name");
             nameField.requestFocus();
             return;
         }
+
+
         Context.getInstance().humanPlayer = new HumanPlayer(nameField.getText(), surnameField.getText(), nationality.getValue());
         Context.getInstance().selectedTeam = selected;
         showView("GameMain");
