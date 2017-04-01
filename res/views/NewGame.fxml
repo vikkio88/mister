@@ -23,7 +23,7 @@
         <RowConstraints/>
     </rowConstraints>
     <HBox alignment="CENTER" prefHeight="50.0" spacing="10.0">
-        <Label styleClass="header-label" text="Player Info" />
+        <Label styleClass="header2-label" text="Player Info" />
         <TextField fx:id="nameField" alignment="CENTER" prefWidth="100.0" promptText="Name"/>
         <TextField fx:id="surnameField" prefWidth="100.0" promptText="Surname"/>
         <ComboBox fx:id="nationality" promptText="Nationality"/>
@@ -41,14 +41,13 @@
     </TableView>
     <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0" spacing="10.0" GridPane.halignment="CENTER"
           GridPane.rowIndex="2">
-        <children>
-          <TextField fx:id="selectedTeamName" alignment="CENTER" prefWidth="300.0" promptText="Select a Team"
-                     editable="false"/>
-            <Button fx:id="detailsButton" onAction="#viewDetails" disable="true" text="Details"/>
-            <Button fx:id="nextButton" onAction="#next" disable="true" text="Next"/>
-        </children>
         <GridPane.margin>
-          <Insets bottom="1.0"/>
+            <Insets bottom="1.0"/>
         </GridPane.margin>
+        <Label styleClass="header2-label" text="Selected team" />
+        <TextField fx:id="selectedTeamName" alignment="CENTER" prefWidth="300.0" promptText="Select a Team"
+                   editable="false"/>
+        <Button fx:id="detailsButton" onAction="#viewDetails" disable="true" text="Details"/>
+        <Button fx:id="nextButton" styleClass="big-button" onAction="#next" disable="true" text="Next"/>
     </HBox>
 </GridPane>
