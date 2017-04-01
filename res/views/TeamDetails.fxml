@@ -69,8 +69,8 @@
         <TextField fx:id="coachModule" alignment="CENTER" prefWidth="100.0" editable="false"
                    GridPane.rowIndex="5" GridPane.columnIndex="1"/>
     </GridPane>
-    <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0" spacing="10.0" GridPane.halignment="CENTER"
+    <HBox alignment="BOTTOM_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="50.0" spacing="10.0" GridPane.halignment="RIGHT"
           GridPane.rowIndex="4">
-        <Button fx:id="backButton" onAction="#back" text="Back"/>
+        <Button styleClass="main-button" onAction="#back" text="Back"/>
     </HBox>
 </GridPane>
