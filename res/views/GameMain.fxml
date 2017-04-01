@@ -10,24 +10,23 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane fx:id="root" maxHeight="1013.0" maxWidth="1900.0" minHeight="640.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1500.0" stylesheets="/css/shared.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mister.app.controllers.GameMainController">
    <children>
       <HBox alignment="TOP_CENTER" layoutY="-2.0" prefHeight="60.0" prefWidth="1500.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label styleClass="header-label" text="Team Name"  fx:id="teamName"/>
+            <Label fx:id="teamName" styleClass="header-label" text="Team Name" />
          </children>
       </HBox>
       <AnchorPane layoutX="7.0" layoutY="82.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
          <children>
             <Pane layoutY="6.0" prefHeight="399.0" prefWidth="400.0" AnchorPane.bottomAnchor="261.0" AnchorPane.rightAnchor="1100.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label styleClass="header2-label" layoutX="14.0" layoutY="14.0" text="Manager" />
-                  <Label layoutX="42.0" layoutY="30.0" text="Name Surname" fx:id="playerName"/>
+                  <Label layoutX="14.0" layoutY="6.0" styleClass="header2-label" text="Manager" />
+                  <Label fx:id="playerName" layoutX="39.0" layoutY="38.0" text="Name Surname" />
                   <ProgressBar fx:id="trustBar" layoutY="85.0" prefHeight="20.0" prefWidth="400.0" progress="0.0" />
-                  <Label styleClass="header2-label" layoutX="14.0" layoutY="69.0" text="Board Trust" />
+                  <Label layoutX="14.0" layoutY="69.0" styleClass="header2-label" text="Board Trust" />
                   <ProgressBar fx:id="moraleBar" layoutY="132.0" prefHeight="20.0" prefWidth="400.0" progress="0.0" />
-                  <Label styleClass="header2-label" layoutX="14.0" layoutY="116.0" text="Team Morale" />
+                  <Label layoutX="14.0" layoutY="116.0" styleClass="header2-label" text="Team Morale" />
                </children>
             </Pane>
             <VBox layoutX="207.0" layoutY="109.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1100.0" AnchorPane.topAnchor="400.0">

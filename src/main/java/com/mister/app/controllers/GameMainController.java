@@ -3,9 +3,7 @@ package com.mister.app.controllers;
 import com.mister.app.game.model.HumanPlayer;
 import com.mister.app.game.model.PlayerTeam;
 import com.mister.app.helper.Context;
-import com.mister.lib.model.Player;
-import com.mister.lib.model.Team;
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleFloatProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -28,8 +26,8 @@ public class GameMainController extends BaseAppController {
         PlayerTeam playerTeam = Context.getInstance().humanTeam;
         HumanPlayer player = Context.getInstance().humanPlayer;
         teamName.setText(playerTeam.getTeam().getName());
-        trustBar.progressProperty().bind(new SimpleIntegerProperty(playerTeam.getTrust()));
-        moraleBar.progressProperty().bind(new SimpleIntegerProperty(playerTeam.getMorale()));
+        trustBar.progressProperty().bind(new SimpleFloatProperty(playerTeam.getTrust()));
+        moraleBar.progressProperty().bind(new SimpleFloatProperty(playerTeam.getMorale()));
         playerName.setText(player.getFullName());
     }
 

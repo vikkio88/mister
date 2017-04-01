@@ -30,12 +30,12 @@ public class PlayerTeam {
         if (morale > 100) morale = 100;
     }
 
-    public int getTrust() {
-        return trust;
+    public float getTrust() {
+        return trust / 100f;
     }
 
-    public int getMorale() {
-        return morale;
+    public float getMorale() {
+        return morale / 100f;
     }
 
     public Team getTeam() {
