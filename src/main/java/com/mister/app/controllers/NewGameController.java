@@ -15,8 +15,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.util.ArrayList;
-
 public class NewGameController extends BaseAppController {
     @FXML
     private TextField nameField;
