@@ -1,5 +1,7 @@
 package com.mister.lib.model.enums;
 
+import java.util.HashMap;
+
 public enum Position {
     GK("GK", "Goalkeeper"),
     D("D", "Defender"),
@@ -26,5 +28,13 @@ public enum Position {
 
     public String getDefinition() {
         return definition;
+    }
+
+    public static HashMap<Position, Integer> getEmptyRolesHash() {
+        HashMap<Position, Integer> roles = new HashMap<>();
+        for (Position position : Position.values()) {
+            roles.put(position, 0);
+        }
+        return roles;
     }
 }

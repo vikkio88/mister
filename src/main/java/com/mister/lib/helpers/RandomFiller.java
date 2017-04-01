@@ -129,6 +129,12 @@ public class RandomFiller {
         return player;
     }
 
+    public static Player getPlayer(Position position) {
+        Player player = getPlayer();
+        player.setPosition(position);
+        return player;
+    }
+
     private static String getSurname() {
         return faker.name.lastName();
     }
