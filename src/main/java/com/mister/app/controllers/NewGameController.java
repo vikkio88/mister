@@ -1,7 +1,6 @@
 package com.mister.app.controllers;
 
 import com.fxhelper.alert.FxErrorAlert;
-import com.fxhelper.generic.FxAlert;
 import com.mister.app.game.model.HumanPlayer;
 import com.mister.app.helper.Context;
 import com.mister.lib.helpers.RandomFiller;
@@ -10,13 +9,11 @@ import com.mister.lib.model.enums.Nationality;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 
 import java.util.ArrayList;
 
@@ -49,15 +46,22 @@ public class NewGameController extends BaseAppController {
     @Override
     public void initialize() {
         if (Context.getInstance().teamList == null) {
-            ArrayList<Team> teams = RandomFiller.getTeams(18);
-            Context.getInstance().teamList = FXCollections.observableList(teams);
+            teamsTable.setPlaceholder(new Label("Generating Teams..."));
+            final Task<ObservableList<Team>> teamsGenerator = new Task<ObservableList<Team>>() {
+                @Override
+                protected ObservableList<Team> call() throws Exception {
+                    Context.getInstance().teamList = FXCollections.observableList(RandomFiller.getTeams(18));
+                    teamsTable.setItems(Context.getInstance().teamList);
+                    return Context.getInstance().teamList;
+                }
+            };
+            new Thread(teamsGenerator).start();
         }
         if (Context.getInstance().nationalities == null) {
             Nationality[] nationalities = Nationality.values();
             Context.getInstance().nationalities = FXCollections.observableArrayList(nationalities);
         }
         nationality.setItems(Context.getInstance().nationalities);
-
         teamName.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getName()));
         playersNumber.setCellValueFactory(p -> new SimpleStringProperty(Integer.toString(p.getValue().getRoster().size())));
         avgSkill.setCellValueFactory(p -> new SimpleObjectProperty<>(p.getValue().getAvgSkill()));
