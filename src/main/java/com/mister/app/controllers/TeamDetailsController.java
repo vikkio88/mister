@@ -62,7 +62,7 @@ public class TeamDetailsController extends BaseAppController {
 
         avgSkill.setText(String.valueOf(selectedTeam.getAvgSkill()));
         finance.setText(String.valueOf(selectedTeam.getFinance()));
-        playersPerRole.setText("");
+        playersPerRole.setText(selectedTeam.getPlayersPerRoleString());
 
         Coach coach = selectedTeam.getCoach();
         coachName.setText(coach.getFullName());

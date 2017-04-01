@@ -46,8 +46,8 @@
         <TextField fx:id="finance" alignment="CENTER" prefWidth="50.0" editable="false"
                    GridPane.rowIndex="2" GridPane.columnIndex="1"/>
         <Label GridPane.rowIndex="3" GridPane.columnIndex="0">Players per Role</Label>
-        <TextField fx:id="playersPerRole" alignment="CENTER" prefWidth="50.0" editable="false"
-                   GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        <TextField fx:id="playersPerRole" alignment="CENTER" prefWidth="450.0" editable="false"
+                   GridPane.rowIndex="4" GridPane.columnSpan="2"/>
     </GridPane>
     <GridPane styleClass="subgrid" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0"
               GridPane.halignment="CENTER"
