@@ -18,9 +18,9 @@ public class RandomFiller {
 
     public static int finance() {
         if (Randomizer.chance(20)) {
-            return Randomizer.intVal(10, 50);
+            return Randomizer.intVal(10, 50) * Team.FINANCE_MULTIPLIER;
         }
-        return Randomizer.intVal(1, 20);
+        return Randomizer.intVal(1, 20) * Team.FINANCE_MULTIPLIER;
     }
 
     public static ArrayList<Team> getTeams(int limit) {
