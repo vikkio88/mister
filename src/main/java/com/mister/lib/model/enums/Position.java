@@ -43,4 +43,9 @@ public enum Position {
     public int getWeight() {
         return weight;
     }
+
+    @Override
+    public String toString() {
+        return definition;
+    }
 }

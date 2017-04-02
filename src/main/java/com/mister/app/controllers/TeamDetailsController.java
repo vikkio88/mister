@@ -4,6 +4,8 @@ import com.mister.app.helper.Context;
 import com.mister.lib.model.Coach;
 import com.mister.lib.model.Player;
 import com.mister.lib.model.Team;
+import com.mister.lib.model.comparators.PositionComparator;
+import com.mister.lib.model.enums.Position;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -22,7 +24,7 @@ public class TeamDetailsController extends BaseAppController {
     @FXML
     private TableColumn<Player, Integer> skill;
     @FXML
-    private TableColumn<Player, String> position;
+    private TableColumn<Player, Position> position;
     @FXML
     private TableColumn<Player, String> nationality;
     @FXML
@@ -54,7 +56,8 @@ public class TeamDetailsController extends BaseAppController {
         name.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getFullName()));
         age.setCellValueFactory(p -> new SimpleObjectProperty<>(p.getValue().getAge()));
         skill.setCellValueFactory(p -> new SimpleObjectProperty<>(p.getValue().getSkill()));
-        position.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getPosition().getDefinition()));
+        position.setCellValueFactory(p -> new SimpleObjectProperty<>(p.getValue().getPosition()));
+        position.setComparator(new PositionComparator());
         nationality.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getNationality().getNationName()));
         this.roster.setItems(roster);
 
