@@ -50,7 +50,7 @@ public class TeamTest {
     public void itGettingScorersReturnsAnOrderedListOfPlayers() {
         Team team = RandomFiller.getTeam();
         Position previousPosition = null;
-        int previousSkill = -1;
+        int previousSkill = 100;
         for (Player player : team.getPossibleScorers()) {
             if (previousPosition == null) {
                 previousPosition = player.getPosition();
