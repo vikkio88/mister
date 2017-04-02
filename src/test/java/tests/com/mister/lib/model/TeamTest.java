@@ -19,8 +19,8 @@ public class TeamTest {
         Team team = getTeam();
         Assert.assertEquals(name, team.getName());
         Assert.assertEquals(0, team.getPlayersNumber());
-        Assert.assertTrue(team.getFinance() < 50);
-        Assert.assertTrue(team.getFinance() > 1);
+        Assert.assertTrue(team.getFinanceMillions() < 50);
+        Assert.assertTrue(team.getFinanceMillions() > 1);
     }
 
     @Test
