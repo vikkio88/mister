@@ -1,12 +1,12 @@
 package com.mister.lib.model;
 
 import com.mister.lib.helpers.RandomFiller;
+import com.mister.lib.model.comparators.PositionComparator;
 import com.mister.lib.model.enums.Position;
 import com.mister.lib.model.generic.Person;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Team {
     public static final int FINANCE_MULTIPLIER = 1_000_000;
@@ -43,7 +43,7 @@ public class Team {
         return finance;
     }
 
-    public int getFinanceMillions(){
+    public int getFinanceMillions() {
         return getFinance() / FINANCE_MULTIPLIER;
     }
 
@@ -101,5 +101,13 @@ public class Team {
             playersPerRole.put(player.getPosition(), count);
         }
         return playersPerRole;
+    }
+
+    public List<Player> getPossibleScorers() {
+        List<Player> players = roster.stream().filter(player -> Position.GK != player.getPosition())
+                .collect(Collectors.toList());
+        players.sort((p, p1) -> Integer.compare(p1.getSkill(), p.getSkill()));
+        Comparator<Player> comparator = Comparator.comparing(Player::getPosition, new PositionComparator());
+        return players.stream().sorted(comparator).collect(Collectors.toList());
     }
 }

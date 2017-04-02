@@ -3,6 +3,7 @@ package tests.com.mister.lib.model;
 
 import com.mister.lib.helpers.RandomFiller;
 import com.mister.lib.helpers.Randomizer;
+import com.mister.lib.model.Player;
 import com.mister.lib.model.Team;
 import com.mister.lib.model.enums.Nationality;
 import com.mister.lib.model.enums.Position;
@@ -42,6 +43,28 @@ public class TeamTest {
         HashMap<Position, Integer> playersPerRole = team.getPlayersPerRole();
         for (Map.Entry<Position, Integer> result : playersPerRole.entrySet()) {
             Assert.assertEquals(expected.get(result.getKey()), result.getValue());
+        }
+    }
+
+    @Test
+    public void itGettingScorersReturnsAnOrderedListOfPlayers() {
+        Team team = RandomFiller.getTeam();
+        Position previousPosition = null;
+        int previousSkill = -1;
+        for (Player player : team.getPossibleScorers()) {
+            if (previousPosition == null) {
+                previousPosition = player.getPosition();
+                previousSkill = player.getSkill();
+                continue;
+            }
+
+            if (player.getPosition() != previousPosition) {
+                previousPosition = player.getPosition();
+                previousSkill = player.getSkill();
+                continue;
+            }
+            Assert.assertTrue(player.getSkill() <= previousSkill);
+            previousSkill = player.getSkill();
         }
     }
 
