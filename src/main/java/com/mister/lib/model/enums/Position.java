@@ -3,23 +3,25 @@ package com.mister.lib.model.enums;
 import java.util.HashMap;
 
 public enum Position {
-    GK("GK", "Goalkeeper"),
-    D("D", "Defender"),
-    LD("LD", "Left Defender"),
-    RD("RD", "Right Defender"),
-    M("CM", "Midfielder"),
-    RM("RM", "Right Midfielder"),
-    LM("LM", "Left Midfielder"),
-    S("S", "Striker"),
-    RS("RS", "Right Striker"),
-    LS("LS", "Left Striker");
+    GK("GK", "Goalkeeper", 1),
+    D("D", "Defender", 2),
+    LD("LD", "Left Defender", 3),
+    RD("RD", "Right Defender", 4),
+    M("CM", "Midfielder", 5),
+    RM("RM", "Right Midfielder", 6),
+    LM("LM", "Left Midfielder", 7),
+    S("S", "Striker", 10),
+    RS("RS", "Right Striker", 9),
+    LS("LS", "Left Striker", 8);
 
     private String shortName;
     private String definition;
+    private int weight;
 
-    Position(String shortName, String definition) {
+    Position(String shortName, String definition, int weight) {
         this.shortName = shortName;
         this.definition = definition;
+        this.weight = weight;
     }
 
     public String getShortName() {
@@ -36,5 +38,9 @@ public enum Position {
             roles.put(position, 0);
         }
         return roles;
+    }
+
+    public int getWeight() {
+        return weight;
     }
 }
