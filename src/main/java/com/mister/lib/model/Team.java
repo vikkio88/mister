@@ -15,6 +15,7 @@ public class Team {
     private Integer finance;
     private Coach coach;
     private Integer avgSkill = null;
+    private Integer avgAge;
     private HashMap<Position, Integer> playersPerRole;
 
     public Team(String name, Coach coach) {
@@ -73,6 +74,14 @@ public class Team {
             avgSkill = sum / (getRoster().size());
         }
         return avgSkill;
+    }
+
+    public Integer getAvgAge() {
+        if (avgAge == null) {
+            int sum = getRoster().stream().mapToInt(Person::getAge).sum();
+            avgAge = sum / (getRoster().size());
+        }
+        return avgAge;
     }
 
     public HashMap<Position, Integer> getPlayersPerRole() {
