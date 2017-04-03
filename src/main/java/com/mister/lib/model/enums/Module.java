@@ -60,4 +60,16 @@ public enum Module {
     public int getCharacter() {
         return character;
     }
+
+    public boolean isOffensive() {
+        return character == 1;
+    }
+
+    public boolean isDefensive() {
+        return character == 4;
+    }
+
+    public boolean isBalanced() {
+        return character == 2;
+    }
 }
