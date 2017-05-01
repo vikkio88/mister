@@ -1,8 +1,10 @@
 package com.mister.lib.model;
 
+import com.mister.lib.model.generic.GameModel;
+
 import java.util.List;
 
-public class MatchResult {
+public class MatchResult extends GameModel {
     private final int goalHome;
     private final int goalAway;
     private final String homeTeam;

@@ -3,12 +3,13 @@ package com.mister.lib.model;
 import com.mister.lib.helpers.RandomFiller;
 import com.mister.lib.model.comparators.PositionComparator;
 import com.mister.lib.model.enums.Position;
+import com.mister.lib.model.generic.GameModel;
 import com.mister.lib.model.generic.Person;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Team {
+public class Team extends GameModel {
     public static final int FINANCE_MULTIPLIER = 1_000_000;
     private String name;
     private ArrayList<Player> roster;
@@ -27,6 +28,9 @@ public class Team {
 
     public Team(String name) {
         this.name = name;
+    }
+
+    public Team() {
     }
 
     public String getName() {

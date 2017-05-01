@@ -2,11 +2,12 @@ package com.mister.lib.model;
 
 import com.mister.lib.helpers.Randomizer;
 import com.mister.lib.model.enums.Module;
+import com.mister.lib.model.generic.GameModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Match {
+public class Match extends GameModel{
     private final Team home;
     private final Team away;
     private boolean simulated = false;

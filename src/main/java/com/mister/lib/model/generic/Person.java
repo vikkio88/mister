@@ -2,7 +2,7 @@ package com.mister.lib.model.generic;
 
 import com.mister.lib.model.enums.Nationality;
 
-public abstract class Person {
+public abstract class Person extends GameModel {
     private static final int SKILL_MAX = 100;
     private static final int SKILL_MIN = 30;
     private String name;
