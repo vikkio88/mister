@@ -34,15 +34,7 @@ public class GameModel {
         }
     }
 
-    public static boolean save(List<Model> modelList) {
-        return save(modelList, modelList.get(0).getSaveFileName());
-    }
-
-    public static boolean save(Model model) {
-        return save(model, model.getSaveFileName());
-    }
-
-    private static boolean save(Object object, String fileName) {
+    public static boolean save(Object object, String fileName) {
         try {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName));
             objectOutputStream.writeObject(object);
