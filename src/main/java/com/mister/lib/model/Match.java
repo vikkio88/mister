@@ -7,7 +7,7 @@ import com.mister.lib.model.generic.GameModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Match extends GameModel{
+public class Match extends GameModel {
     private final Team home;
     private final Team away;
     private boolean simulated = false;
@@ -115,5 +115,10 @@ public class Match extends GameModel{
 
     private int fluke() {
         return Randomizer.intVal(0, 3);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s - %s", home.getName(), away.getName());
     }
 }

@@ -10,8 +10,12 @@ public class Round extends GameModel {
     private List<Match> matches;
     private boolean simulated = false;
 
-    public Round(List<Match> matches) {
-        this.matches = matches;
+    public Round() {
+        matches = new ArrayList<>();
+    }
+
+    public void addMatch(Match match) {
+        matches.add(match);
     }
 
     public List<MatchResult> simulate() {
@@ -23,5 +27,9 @@ public class Round extends GameModel {
 
     public boolean wasPlayed() {
         return simulated;
+    }
+
+    public List<Match> getMatches() {
+        return matches;
     }
 }
