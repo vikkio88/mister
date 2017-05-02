@@ -6,11 +6,11 @@ import com.mister.lib.model.generic.GameModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LeagueRound extends GameModel {
+public class Round extends GameModel {
     private List<Match> matches;
     private boolean simulated = false;
 
-    public LeagueRound(List<Match> matches) {
+    public Round(List<Match> matches) {
         this.matches = matches;
     }
 
