@@ -8,27 +8,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LeagueFixture {
+
     public static List<Round> generate(List<Team> teams) {
+        int numberOfTeams = teams.size();
+        int totalRounds = numberOfTeams - 1;
+        int matchesPerRound = numberOfTeams / 2;
         List<Round> rounds = new ArrayList<>();
-        int teamsNumber = teams.size();
-        int roundsNumber = teamsNumber - 1;
-        int halfSize = teamsNumber / 2;
-        for (int i = 0; i < roundsNumber; i++) {
+        for (int round = 0; round < totalRounds; round++) {
             Round tempRound = new Round();
-            int teamIndex = i % teamsNumber;
-            tempRound.addMatch(new Match(teams.get(teamIndex), teams.get(0)));
-            for (int j = 1; j < halfSize; j++) {
-                int teamA = (i + j) % teamsNumber;
-                int teamB = (i + teamsNumber - j) % teamsNumber;
-                tempRound.addMatch(new Match(teams.get(teamA), teams.get(teamB)));
+            for (int match = 0; match < matchesPerRound; match++) {
+                int home = (round + match) % (numberOfTeams - 1);
+                int away = (numberOfTeams - 1 - match + round) % (numberOfTeams - 1);
+                if (match == 0) {
+                    away = numberOfTeams - 1;
+                }
+                tempRound.addMatch(new Match(teams.get(home), teams.get(away)));
             }
             rounds.add(tempRound);
         }
-        rounds.forEach(r -> {
-            System.out.println("Round.......");
-            r.getMatches().forEach(System.out::println);
-        });
         return rounds;
-
     }
 }
