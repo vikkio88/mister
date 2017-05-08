@@ -9,8 +9,10 @@ import java.util.List;
 public class Round extends GameModel {
     private List<Match> matches;
     private boolean simulated = false;
+    private int matchDay;
 
-    public Round() {
+    public Round(int matchDay) {
+        this.matchDay = matchDay;
         matches = new ArrayList<>();
     }
 
@@ -31,5 +33,9 @@ public class Round extends GameModel {
 
     public List<Match> getMatches() {
         return matches;
+    }
+
+    public int getMatchDay() {
+        return matchDay;
     }
 }
