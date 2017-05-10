@@ -10,7 +10,7 @@ public class League extends GameModel {
     private String name;
     private List<Team> teams;
     private List<Round> rounds;
-    private int currentRoundPointer = 0;
+    private int lastRoundPointer = 0;
 
     public League(String name, List<Team> teams, List<Round> rounds) {
         this.name = name;
@@ -18,12 +18,19 @@ public class League extends GameModel {
         this.rounds = rounds;
     }
 
-    public int getCurrentRound() {
-        return currentRoundPointer + 1;
+    public Round getNextRound() {
+        if (lastRoundPointer < getTotalRounds() - 1) {
+            lastRoundPointer++;
+            return rounds.get(lastRoundPointer);
+        }
+        return rounds.get(lastRoundPointer);
     }
 
-    public int getTotalRounds() {
+    private int getTotalRounds() {
         return rounds.size();
     }
 
+    public boolean hasMatchLeft() {
+        return lastRoundPointer < getTotalRounds() - 1;
+    }
 }
