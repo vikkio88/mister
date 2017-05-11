@@ -14,6 +14,8 @@ public class Match extends GameModel {
     private int goalHome = 0;
     private int goalAway = 0;
 
+    private MatchResult result = null;
+
     public Match(Team home, Team away) {
         this.home = home;
         this.away = away;
@@ -24,6 +26,10 @@ public class Match extends GameModel {
     }
 
     public MatchResult simulate() {
+        if (simulated) {
+            return result;
+        }
+
         int homePoints = home.getAvgSkill();
         int awayPoints = away.getAvgSkill();
         homePoints += this.malusModule(
@@ -70,7 +76,8 @@ public class Match extends GameModel {
         goalHome = goalHome < 0 ? 0 : goalHome;
         goalAway = goalAway < 0 ? 0 : goalAway;
         simulated = true;
-        return new MatchResult(goalHome, goalAway, home.getName(), away.getName(), getScorersHome(), getScorersAway());
+        result = new MatchResult(goalHome, goalAway, home.getName(), away.getName(), getScorersHome(), getScorersAway());
+        return result;
     }
 
     private int malusModule(boolean teamCanPlay) {
@@ -115,6 +122,10 @@ public class Match extends GameModel {
 
     private int fluke() {
         return Randomizer.intVal(0, 3);
+    }
+
+    public MatchResult getResult() {
+        return result;
     }
 
     @Override

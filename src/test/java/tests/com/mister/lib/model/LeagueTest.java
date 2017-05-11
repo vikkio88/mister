@@ -1,5 +1,6 @@
 package tests.com.mister.lib.model;
 
+import com.mister.lib.helpers.RandomFiller;
 import com.mister.lib.model.League;
 import com.mister.lib.model.Round;
 import com.mister.lib.model.Team;
@@ -30,13 +31,16 @@ public class LeagueTest {
     }
 
     @Test
-    public void canSimulateAllTheMatchesByRound() {
-        List<Team> teams = getTeams();
+    public void itIteratesOverTheRoundsWhileSimulatingThem() {
+        List<Team> teams = RandomFiller.getTeams(4);
         List<Round> rounds = LeagueFixture.generate(teams);
         League sampleLeague = new League("Serie A", teams, rounds);
         for (int i = 0; i < rounds.size(); i++) {
-            sampleLeague.getNextRound();
+            Round nextRound = sampleLeague.getNextRound();
+            sampleLeague.simulateNextRound();
+            Round lastRound = sampleLeague.getLastRound();
+            System.out.println(nextRound.getResults());
+            Assert.assertEquals(nextRound, lastRound);
         }
-        Assert.assertFalse(sampleLeague.hasMatchLeft());
     }
 }

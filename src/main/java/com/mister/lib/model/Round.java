@@ -11,6 +11,8 @@ public class Round extends GameModel {
     private boolean simulated = false;
     private int matchDay;
 
+    private List<MatchResult> results;
+
     public Round(int matchDay) {
         this.matchDay = matchDay;
         matches = new ArrayList<>();
@@ -25,6 +27,13 @@ public class Round extends GameModel {
         matches.forEach(match -> results.add(match.simulate()));
         simulated = true;
         return results;
+    }
+
+    public List<MatchResult> getResults() {
+        if (simulated) {
+            return results;
+        }
+        return null;
     }
 
     public boolean wasPlayed() {
