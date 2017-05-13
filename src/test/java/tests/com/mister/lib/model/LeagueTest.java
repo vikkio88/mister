@@ -39,7 +39,6 @@ public class LeagueTest {
             Round nextRound = sampleLeague.getNextRound();
             sampleLeague.simulateNextRound();
             Round lastRound = sampleLeague.getLastRound();
-            System.out.println(nextRound.getResults());
             Assert.assertEquals(nextRound, lastRound);
         }
     }

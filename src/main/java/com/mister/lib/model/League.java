@@ -29,14 +29,14 @@ public class League extends GameModel {
     }
 
     public Round getLastRound() {
-        if (lastRoundPointer > 0) {
-            return rounds.get(lastRoundPointer - 1);
+        if (lastRoundPointer >= 0) {
+            return rounds.get(lastRoundPointer);
         }
         return null;
     }
 
     public Round getNextRound() {
-        if (lastRoundPointer < rounds.size()) {
+        if (lastRoundPointer + 1 < rounds.size()) {
             return rounds.get(lastRoundPointer + 1);
         }
         return null;

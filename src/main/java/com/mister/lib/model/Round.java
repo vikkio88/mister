@@ -23,7 +23,7 @@ public class Round extends GameModel {
     }
 
     public List<MatchResult> simulate() {
-        List<MatchResult> results = new ArrayList<>();
+        results = new ArrayList<>();
         matches.forEach(match -> results.add(match.simulate()));
         simulated = true;
         return results;
