@@ -7,12 +7,12 @@ import java.util.List;
 public class MatchResult extends GameModel {
     private final int goalHome;
     private final int goalAway;
-    private final String homeTeam;
-    private final String awayTeam;
+    private final Team homeTeam;
+    private final Team awayTeam;
     private final List<Player> scorersHome;
     private final List<Player> scorersAway;
 
-    public MatchResult(int goalHome, int goalAway, String homeTeam, String awayTeam, List<Player> scorersHome, List<Player> scorersAway) {
+    public MatchResult(int goalHome, int goalAway, Team homeTeam, Team awayTeam, List<Player> scorersHome, List<Player> scorersAway) {
         this.goalHome = goalHome;
         this.goalAway = goalAway;
         this.homeTeam = homeTeam;
@@ -31,7 +31,7 @@ public class MatchResult extends GameModel {
 
     @Override
     public String toString() {
-        return String.format("%s %d - %d %s", homeTeam, goalHome, goalAway, awayTeam);
+        return String.format("%s %d - %d %s", homeTeam.getName(), goalHome, goalAway, awayTeam.getName());
     }
 
     public List<Player> getScorersHome() {
@@ -40,5 +40,23 @@ public class MatchResult extends GameModel {
 
     public List<Player> getScorersAway() {
         return scorersAway;
+    }
+
+    public boolean isDraw() {
+        return goalHome == goalAway;
+    }
+
+    public Team getWinner() {
+        if (!isDraw() && goalHome > goalAway) {
+            return homeTeam;
+        }
+        return awayTeam;
+    }
+
+    public Team getLoser() {
+        if (!isDraw() && goalHome > goalAway) {
+            return awayTeam;
+        }
+        return homeTeam;
     }
 }

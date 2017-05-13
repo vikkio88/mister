@@ -3,20 +3,21 @@ package com.mister.lib.model;
 
 import com.mister.lib.model.generic.GameModel;
 
-import java.awt.geom.RoundRectangle2D;
+import java.util.HashMap;
 import java.util.List;
 
 public class League extends GameModel {
 
     private String name;
-    private List<Team> teams;
+    private HashMap<Team, Integer> table;
     private List<Round> rounds;
 
     private int lastRoundPointer = -1;
 
     public League(String name, List<Team> teams, List<Round> rounds) {
         this.name = name;
-        this.teams = teams;
+        table = new HashMap<>();
+        teams.forEach(t -> table.put(t, 0));
         this.rounds = rounds;
     }
 
@@ -43,12 +44,31 @@ public class League extends GameModel {
     }
 
     public List<MatchResult> simulateNextRound() {
-        Round next = getNextRound();
-        if (next != null) {
+        Round nextRound = getNextRound();
+        if (nextRound != null) {
             lastRoundPointer++;
-            return next.simulate();
+            nextRound.simulate();
+            calculateResults();
+            return nextRound.getResults();
         }
         return null;
+    }
+
+    private void calculateResults() {
+        Round round = getLastRound();
+        round.getMatches().forEach(m -> {
+            Team winner = m.getHomeTeam();
+            Team loser = m.getAwayTeam();
+            int winnerPoints = 3, loserPoints = 0;
+            if (m.getResult().isDraw()) {
+                winnerPoints = loserPoints = 1;
+            } else {
+                winner = m.getResult().getWinner();
+                loser = m.getResult().getLoser();
+            }
+            table.put(winner, table.get(winner) + winnerPoints);
+            table.put(loser, table.get(loser) + loserPoints);
+        });
     }
 
     private int getTotalRounds() {
@@ -57,5 +77,9 @@ public class League extends GameModel {
 
     public boolean hasMatchLeft() {
         return lastRoundPointer < getTotalRounds() - 1;
+    }
+
+    public HashMap<Team, Integer> getTable() {
+        return table;
     }
 }

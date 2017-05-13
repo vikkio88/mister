@@ -76,7 +76,7 @@ public class Match extends GameModel {
         goalHome = goalHome < 0 ? 0 : goalHome;
         goalAway = goalAway < 0 ? 0 : goalAway;
         simulated = true;
-        result = new MatchResult(goalHome, goalAway, home.getName(), away.getName(), getScorersHome(), getScorersAway());
+        result = new MatchResult(goalHome, goalAway, home, away, getScorersHome(), getScorersAway());
         return result;
     }
 
@@ -131,5 +131,13 @@ public class Match extends GameModel {
     @Override
     public String toString() {
         return String.format("%s - %s", home.getName(), away.getName());
+    }
+
+    public Team getAwayTeam() {
+        return away;
+    }
+
+    public Team getHomeTeam() {
+        return home;
     }
 }

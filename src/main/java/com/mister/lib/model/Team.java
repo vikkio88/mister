@@ -22,7 +22,7 @@ public class Team extends GameModel {
     public Team(String name, Coach coach) {
         this.name = name;
         this.coach = coach;
-        roster = new ArrayList<Player>();
+        roster = new ArrayList<>();
         finance = null;
     }
 
